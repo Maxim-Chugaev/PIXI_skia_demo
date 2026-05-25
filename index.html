@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PIXI → Skia demo</title>
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <h1>PIXI → Skia → PDF demo</h1>
+      <p class="subtitle">
+        Pixi.js v7.2.4-legacy renders into the left canvas. The same scene is
+        replayed through a Skia (CanvasKit&nbsp;WASM) wrapper into the right
+        canvas. The same visitor also walks the tree to emit a vector PDF.
+      </p>
+    </header>
+
+    <section class="toolbar">
+      <button id="btn-random" type="button">＋ Random shape</button>
+      <button id="btn-next-scene" type="button">⟳ Next scene</button>
+      <button id="btn-clear" type="button">✕ Clear extra shapes</button>
+      <button id="btn-export-pdf" type="button" class="primary">
+        ⬇ Export vector PDF
+      </button>
+      <span id="status" class="status">Loading Skia…</span>
+    </section>
+
+    <main class="stage">
+      <figure class="panel">
+        <figcaption>PIXI canvas (forceCanvas: true)</figcaption>
+        <div id="pixi-host" class="canvas-host"></div>
+      </figure>
+
+      <figure class="panel">
+        <figcaption>Skia (CanvasKit) re-render of the same scene</figcaption>
+        <div id="skia-host" class="canvas-host">
+          <canvas id="skia-canvas" width="800" height="600"></canvas>
+        </div>
+      </figure>
+    </main>
+
+    <section class="log-panel">
+      <h2>Event log</h2>
+      <pre id="event-log"></pre>
+    </section>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

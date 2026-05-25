@@ -1,0 +1,21 @@
+{
+  "name": "pixi-skia-demo",
+  "version": "1.0.0",
+  "description": "PIXI.js -> Skia renderer with vector PDF export",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "canvaskit-wasm": "0.39.1",
+    "jspdf": "2.5.2",
+    "pixi.js-legacy": "7.2.4",
+    "svg2pdf.js": "2.2.4"
+  },
+  "devDependencies": {
+    "typescript": "5.4.5",
+    "vite": "5.2.11"
+  }
+}
