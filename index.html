@@ -10,9 +10,9 @@
     <header class="topbar">
       <h1>PIXI → Skia → PDF demo</h1>
       <p class="subtitle">
-        Pixi.js v7.2.4-legacy renders into the left canvas. The same scene is
-        replayed through a Skia (CanvasKit&nbsp;WASM) wrapper into the right
-        canvas. The same visitor also walks the tree to emit a vector PDF.
+        Pixi.js v7.2.4-legacy рендерит левый канвас. Та же сцена проигрывается
+        через Skia (CanvasKit&nbsp;WASM с PDF backend) на правом канвасе.
+        Экспорт PDF идёт через <code>SkPDF::MakeDocument</code>.
       </p>
     </header>
 

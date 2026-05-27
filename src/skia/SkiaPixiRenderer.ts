@@ -4,7 +4,7 @@ import type {
   Image as SkImage,
   Paint as SkPaint,
   Path as SkPath,
-} from "canvaskit-wasm";
+} from "./canvaskit-pdf.d.ts";
 import * as PIXI from "pixi.js-legacy";
 
 import { SkiaImageCache } from "./textureCache";

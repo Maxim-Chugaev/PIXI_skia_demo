@@ -6,13 +6,11 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc --noEmit && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "build:canvaskit-pdf": "bash scripts/build-canvaskit-pdf.sh"
   },
   "dependencies": {
-    "canvaskit-wasm": "0.39.1",
-    "jspdf": "2.5.2",
-    "pixi.js-legacy": "7.2.4",
-    "svg2pdf.js": "2.2.4"
+    "pixi.js-legacy": "7.2.4"
   },
   "devDependencies": {
     "typescript": "5.4.5",

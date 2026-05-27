@@ -1,4 +1,4 @@
-import type { Surface as SkSurface } from "canvaskit-wasm";
+import type { Surface as SkSurface } from "./skia/canvaskit-pdf.d.ts";
 import * as PIXI from "pixi.js-legacy";
 
 import { attachSkiaPointerForwarding } from "./events";
@@ -89,10 +89,8 @@ async function initSkia(): Promise<void> {
   skiaCanvas.style.width = `${STAGE_W}px`;
   skiaCanvas.style.height = `${STAGE_H}px`;
 
-  // Сначала пробуем WebGL-ускорение; при неудаче откатываемся на
-  // программный (растровый) бекенд.
-  skiaSurface =
-    ck.MakeWebGLCanvasSurface(skiaCanvas) ?? ck.MakeSWCanvasSurface(skiaCanvas);
+  // PDF-сборка CanvasKit не включает WebGL — только программный (SW) backend.
+  skiaSurface = ck.MakeSWCanvasSurface(skiaCanvas);
   if (!skiaSurface) {
     setStatus("Не удалось создать Skia-сёрфейс.");
     throw new Error("Could not create Skia surface");
@@ -146,10 +144,20 @@ btnClear.addEventListener("click", () => {
 });
 
 btnExportPdf.addEventListener("click", () => {
-  setStatus("Сборка PDF…");
+  if (!skiaRenderer) {
+    log("✗ PDF export failed: Skia ещё не инициализирован");
+    return;
+  }
+  setStatus("Сборка PDF (Skia PDF backend)…");
   try {
-    exportContainerToPdf(topContainer, STAGE_W, STAGE_H);
-    log("✓ Vector PDF exported");
+    exportContainerToPdf(
+      skiaRenderer.canvasKit,
+      skiaRenderer,
+      topContainer,
+      STAGE_W,
+      STAGE_H,
+    );
+    log("✓ Vector PDF exported (Skia PDF backend)");
     setStatus("PDF сохранён");
   } catch (err) {
     console.error(err);

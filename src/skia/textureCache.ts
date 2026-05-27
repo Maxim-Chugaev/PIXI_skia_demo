@@ -1,4 +1,4 @@
-import type { CanvasKit, Image as SkImage } from "canvaskit-wasm";
+import type { CanvasKit, Image as SkImage } from "./canvaskit-pdf.d.ts";
 import * as PIXI from "pixi.js-legacy";
 
 /**
